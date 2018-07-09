@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-//import App from './App';
+import Card from './Card';
 import registerServiceWorker from './registerServiceWorker';
+import 'tachyons'
 
-ReactDOM.render(<h1>Jumaa</h1>, document.getElementById('root'));
+ReactDOM.render(
+    <div>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+    </div>
+    , document.getElementById('root'));
 registerServiceWorker();
