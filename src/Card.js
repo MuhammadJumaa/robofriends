@@ -1,11 +1,12 @@
 import React from 'react';
-const Card = ({id, name , email}) =>{
+const Card = (data) =>{
+    const  data1 =data.data;
     return(
     <div className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
-        <img src={`https://robohash.org/${name}?200x200`} alt='{Name}' />
+        <img src={`https://robohash.org/${data1.id}?200x200`} alt='{data1.name}' />
         <div>
-            <h2>{name}</h2>
-        <p>{email}</p>
+            <h2>{data1.name}</h2>
+        <p>{data1.Title}</p>
         </div>
     </div>   );
 }
