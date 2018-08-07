@@ -74,11 +74,13 @@ if(filterRobots.length===0){
     <div className='tc'>
         <h1 className='f1'>SKYLINE TEAM</h1>
         <SearchBox searchChange={this.onSearchChange} />
-        <ErrorBoundry>
+        
         <Scroll>
+        <ErrorBoundry>
         <CardList robots={filterRobots}/>
-        </Scroll>
         </ErrorBoundry>
+        </Scroll>
+        
     </div> 
     ) ;
     
