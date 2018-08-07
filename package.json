@@ -1,5 +1,5 @@
 {
-  "homepage ":"http://MuhammadJumaa.github.io/robofriends",
+ 
   "name": "robofriends",
   "version": "0.1.0",
   "private": true,
@@ -22,4 +22,5 @@
     "eslint-plugin-babel": "^5.1.0",
     "gh-pages": "^1.2.0"
   }
+   ,"homepage": "http://MuhammadJumaa.github.io/robofriends"
 }
