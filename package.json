@@ -1,5 +1,4 @@
 {
- 
   "name": "robofriends",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +6,11 @@
     "mpm": "0.0.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "tachyons": "^4.10.0"
   },
   "scripts": {
@@ -20,7 +23,8 @@
   },
   "devDependencies": {
     "eslint-plugin-babel": "^5.1.0",
-    "gh-pages": "^1.2.0"
-  }
-   ,"homepage": "http://MuhammadJumaa.github.io/robofriends"
+    "gh-pages": "^1.2.0",
+    "redux-devtools-extension": "^2.13.5"
+  },
+  "homepage": "http://MuhammadJumaa.github.io/robofriends"
 }

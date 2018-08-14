@@ -5,31 +5,34 @@ import Scroll from '../components/scroll';
 import ErrorBoundry from '../components/ErrorBoundry'
 //import { robots } from './robots';
 import '../containers/App.css';
+import {connect} from 'react-redux';
+import { setSearchField,requestRobots } from '../actions';
 
-class  App extends React.Component {
-    constructor(){
-        super()
-        this.state= {
-            robots: [],
-            searchfield: ''
-        }   
+const mapStateToProps=state=>{
+    return {
+        searchField: state.searchRobots.searchField,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
     }
+}
+const mapDispatchToProps=(dispatch)=>{
+  return {  
+    onSearchChange:(event)=>dispatch(setSearchField(event.target.value)),
+    onRequestRobots:()=>dispatch(requestRobots())
+  }
+}
+class  App extends React.Component {   
 
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/users').then(response=> response.json())
-        .then(users => 
-            this.setState({robots:users})
-        );
+       this.props.onRequestRobots();
     }
-    onSearchChange = (event) => {
-        this.setState({searchfield: event.target.value})
-       
-    }
+   
     render(){
-        const{robots,searchfield}=this.state;
+        const {searchField,onSearchChange,robots,isPending}=this.props
          const filterRobots= 
          robots.filter(robot => {
-            var searchResult= robot.name.toLowerCase().includes(searchfield.toLowerCase()); 
+            var searchResult= robot.name.toLowerCase().includes(searchField.toLowerCase()); 
 
             return searchResult;
         })      
@@ -38,31 +41,31 @@ if(filterRobots.length===0){
      return !robots.length ?  <h1 className='tc'>Loading...</h1> :( 
     <div className='tc'>
         <h1 className='f1'>SKYLINE TEAM</h1>
-        <SearchBox searchChange={this.onSearchChange} />
+        <SearchBox searchChange={onSearchChange} />
         <ErrorBoundry>
         <Scroll>
         <CardList robots={[
        
        {
         id:1,
-        name:searchfield,
-        linkname:searchfield,
-        Title:searchfield
+        name:searchField,
+        linkname:searchField,
+        Title:searchField
         },{
         id:1,
-        name:searchfield+' '+searchfield,
-        linkname:searchfield+' '+searchfield,
-        Title:searchfield+' '+searchfield
+        name:searchField+' '+searchField,
+        linkname:searchField+' '+searchField,
+        Title:searchField+' '+searchField
         },{
         id:1,
-        name:searchfield+' '+searchfield+' '+searchfield,
-        linkname:searchfield+' '+searchfield+' '+searchfield,
-        Title:searchfield+' '+searchfield+' '+searchfield
+        name:searchField+' '+searchField+' '+searchField,
+        linkname:searchField+' '+searchField+' '+searchField,
+        Title:searchField+' '+searchField+' '+searchField
         },{
         id:1,
-        name:searchfield+' '+searchfield+' '+searchfield+' '+searchfield,
-        linkname:searchfield+' '+searchfield+' '+searchfield+' '+searchfield,
-        Title:searchfield+' '+searchfield+' '+searchfield+' '+searchfield
+        name:searchField+' '+searchField+' '+searchField+' '+searchField,
+        linkname:searchField+' '+searchField+' '+searchField+' '+searchField,
+        Title:searchField+' '+searchField+' '+searchField+' '+searchField
         },
     ]}/>
         </Scroll>
@@ -70,10 +73,10 @@ if(filterRobots.length===0){
     </div> 
     ) ;
 }
-        return !robots.length ?  <h1 className='tc'>Loading...</h1> :( 
+        return isPending ?  <h1 className='tc'>Loading...</h1> :( 
     <div className='tc'>
         <h1 className='f1'>SKYLINE TEAM</h1>
-        <SearchBox searchChange={this.onSearchChange} />
+        <SearchBox searchChange={onSearchChange} />
         
         <Scroll>
         <ErrorBoundry>
@@ -88,4 +91,4 @@ if(filterRobots.length===0){
 
 }
 
-export default App;
+export default connect(mapStateToProps,mapDispatchToProps)(App);
