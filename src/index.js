@@ -13,7 +13,7 @@ import 'tachyons';
 
 const logger =createLogger();
 const rootReducers=combineReducers({searchRobots,requestRobots} )
-const store = createStore(rootReducers , composeWithDevTools( applyMiddleware(thunkMiddleware,logger)));
+const store = createStore(rootReducers , composeWithDevTools( applyMiddleware(thunkMiddleware)));
 ReactDOM.render(
 		<Provider store={store}> 
 		<App />

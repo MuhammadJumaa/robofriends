@@ -1,8 +1,9 @@
 import React from 'react';
+import Header from '../components/Header';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/scroll';
-import ErrorBoundry from '../components/ErrorBoundry'
+import ErrorBoundry from '../components/ErrorBoundry';
 //import { robots } from './robots';
 import '../containers/App.css';
 import {connect} from 'react-redux';
@@ -40,7 +41,7 @@ class  App extends React.Component {
 if(filterRobots.length===0){
      return !robots.length ?  <h1 className='tc'>Loading...</h1> :( 
     <div className='tc'>
-        <h1 className='f1'>SKYLINE TEAM</h1>
+        <Header />
         <SearchBox searchChange={onSearchChange} />
         <ErrorBoundry>
         <Scroll>
@@ -75,7 +76,7 @@ if(filterRobots.length===0){
 }
         return isPending ?  <h1 className='tc'>Loading...</h1> :( 
     <div className='tc'>
-        <h1 className='f1'>SKYLINE TEAM</h1>
+        <Header />
         <SearchBox searchChange={onSearchChange} />
         
         <Scroll>
