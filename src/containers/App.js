@@ -39,7 +39,6 @@ class App extends React.Component {
         })
         var Content = null;
         if (filterRobots.length === 0&&!isPending) {
-            console.log("empty");
             Content = 
             (
                 <CardList robots={[
